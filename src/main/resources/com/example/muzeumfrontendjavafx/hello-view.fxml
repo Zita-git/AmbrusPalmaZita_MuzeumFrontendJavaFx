@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.muzeumfrontendjavafx.Controller">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -13,7 +13,7 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="224.0" prefWidth="200.0">
                      <children>
                         <ListView fx:id="listazasFestmeny" layoutX="25.0" layoutY="23.0" prefHeight="331.0" prefWidth="282.0" />
-                        <Button fx:id="torlesBTNFestmeny" disable="true" layoutX="325.0" layoutY="328.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="257.0" text="Törlés" />
+                        <Button fx:id="torlesBTNFestmeny" disable="true" layoutX="325.0" layoutY="328.0" mnemonicParsing="false" onAction="#onTorlesFestmenyBTNClick" prefHeight="25.0" prefWidth="257.0" text="Törlés" />
                         <TabPane layoutX="327.0" layoutY="23.0" prefHeight="297.0" prefWidth="255.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
                             <Tab text="Hozzáaadás">
@@ -38,7 +38,7 @@
                                           <TextArea fx:id="titleFestmeny" layoutX="68.0" layoutY="21.0" prefHeight="117.0" prefWidth="173.0" promptText="A festmény neve" />
                                           <CheckBox fx:id="onDisplayFestmeny" layoutX="196.0" layoutY="191.0" mnemonicParsing="false" text="Igen" />
                                           <DatePicker fx:id="datePickerFestmeny" layoutX="91.0" layoutY="151.0" prefHeight="25.0" prefWidth="147.0" />
-                                          <Button fx:id="hozaadasBTNFestmeny" layoutX="18.0" layoutY="229.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="223.0" text="Hozzáadás" />
+                                          <Button fx:id="hozaadasBTNFestmeny" layoutX="18.0" layoutY="229.0" mnemonicParsing="false" onAction="#onHozzaadasFestmenyBTNClick" prefHeight="25.0" prefWidth="223.0" text="Hozzáadás" />
                                        </children>
                                     </AnchorPane>
                               </content>
@@ -65,7 +65,7 @@
                                           <TextArea fx:id="titleFestmenymodosit" layoutX="68.0" layoutY="24.0" prefHeight="117.0" prefWidth="173.0" />
                                           <CheckBox fx:id="onDisplayFestmenymodosit" layoutX="196.0" layoutY="193.0" mnemonicParsing="false" text="Igen" />
                                           <DatePicker fx:id="datePickerFestmenymodosit" layoutX="94.0" layoutY="153.0" prefHeight="25.0" prefWidth="147.0" />
-                                          <Button fx:id="modositBTNFestmeny1" layoutX="16.0" layoutY="229.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="223.0" text="Módosítás" />
+                                          <Button fx:id="modositBTNFestmeny" layoutX="16.0" layoutY="229.0" mnemonicParsing="false" onAction="#onModositasFestmenyBTNClick" prefHeight="25.0" prefWidth="223.0" text="Módosítás" />
                                        </children>
                                     </AnchorPane>
                               </content>
@@ -81,7 +81,7 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <ListView fx:id="listazasSzobrok" layoutX="18.0" layoutY="14.0" prefHeight="331.0" prefWidth="282.0" />
-                        <Button fx:id="torlesBTNSzobrok" disable="true" layoutX="322.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="257.0" text="Törlés" />
+                        <Button fx:id="torlesBTNSzobrok" disable="true" layoutX="322.0" layoutY="320.0" mnemonicParsing="false" onAction="#onTorlesSzobrokBTNClick" prefHeight="25.0" prefWidth="257.0" text="Törlés" />
                         <TabPane layoutX="323.0" layoutY="17.0" prefHeight="297.0" prefWidth="255.0" tabClosingPolicy="UNAVAILABLE">
                            <tabs>
                               <Tab text="Hozzáaadás">
@@ -103,7 +103,7 @@
                                                 <Font size="21.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="hozaadasBTNSzobrok" layoutX="18.0" layoutY="229.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="223.0" text="Hozzáadás" />
+                                          <Button fx:id="hozaadasBTNSzobrok" layoutX="18.0" layoutY="229.0" mnemonicParsing="false" onAction="#onHozzaadasSzobrokBTNClick" prefHeight="25.0" prefWidth="223.0" text="Hozzáadás" />
                                           <TextField fx:id="nevSzobrok" layoutX="41.0" layoutY="52.0" prefHeight="25.0" prefWidth="200.0" />
                                           <Spinner fx:id="magassagSzobrok" layoutX="41.0" layoutY="122.0" prefHeight="25.0" prefWidth="200.0" />
                                           <Spinner fx:id="arSzobrok" layoutX="41.0" layoutY="188.0" prefHeight="25.0" prefWidth="200.0" />
@@ -115,7 +115,7 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <Button fx:id="modositBTNSzobrok" layoutX="16.0" layoutY="229.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="223.0" text="Módosítás" />
+                                          <Button fx:id="modositBTNSzobrok" layoutX="16.0" layoutY="229.0" mnemonicParsing="false" onAction="#onModositasSzobrokBTNClick" prefHeight="25.0" prefWidth="223.0" text="Módosítás" />
                                           <Label layoutX="18.0" layoutY="14.0" text="Név:">
                                              <font>
                                                 <Font size="21.0" />
