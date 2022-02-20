@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Spinner?>
-<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.control.SpinnerValueFactory?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.muzeumfrontendjavafx.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.muzeumfrontendjavafx.Controller">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -45,14 +34,12 @@
                                                 <Font size="21.0" />
                                              </font>
                                           </Label>
-                                          <TextArea fx:id="titleFestmeny" layoutX="68.0" layoutY="21.0" prefHeight="117.0" prefWidth="173.0" promptText="A festmény neve" />
+                                          <TextArea fx:id="titleFestmeny" layoutX="68.0" layoutY="21.0" prefHeight="117.0" prefWidth="173.0" promptText="A festmény neve" wrapText="true" />
                                           <CheckBox fx:id="onDisplayFestmeny" layoutX="196.0" layoutY="191.0" mnemonicParsing="false" text="Igen" />
                                           <Button fx:id="hozaadasBTNFestmeny" layoutX="18.0" layoutY="229.0" mnemonicParsing="false" onAction="#onHozzaadasFestmenyBTNClick" prefHeight="25.0" prefWidth="223.0" text="Hozzáadás" />
-                                          <Spinner fx:id="datePickerFestmeny" editable="true" layoutX="89.0" layoutY="151.0">
-                                              <valueFactory>
-                                                  <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" initialValue="1000" max="2022" />
-                                              </valueFactory>
-                                          </Spinner>
+                                           <Spinner fx:id="datePickerFestmeny" editable="true" layoutX="90.0" layoutY="153.0" prefHeight="25.0" prefWidth="146.0">
+
+                                           </Spinner>
                                        </children>
                                     </AnchorPane>
                               </content>
@@ -76,13 +63,11 @@
                                                 <Font size="21.0" />
                                              </font>
                                           </Label>
-                                          <TextArea fx:id="titleFestmenymodosit" layoutX="68.0" layoutY="24.0" prefHeight="117.0" prefWidth="173.0" />
+                                          <TextArea fx:id="titleFestmenymodosit" layoutX="68.0" layoutY="24.0" prefHeight="117.0" prefWidth="173.0" wrapText="true" />
                                           <CheckBox fx:id="onDisplayFestmenymodosit" layoutX="196.0" layoutY="193.0" mnemonicParsing="false" text="Igen" />
                                           <Button fx:id="modositBTNFestmeny" layoutX="16.0" layoutY="229.0" mnemonicParsing="false" onAction="#onModositasFestmenyBTNClick" prefHeight="25.0" prefWidth="223.0" text="Módosítás" />
-                                          <Spinner fx:id="datePickerFestmenymodosit" editable="true" layoutX="87.0" layoutY="153.0">
-                                               <valueFactory>
-                                                   <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" max="2022" />
-                                               </valueFactory>
+                                          <Spinner fx:id="datePickerFestmenymodosit" editable="true" layoutX="90.0" layoutY="153.0" prefHeight="25.0" prefWidth="146.0">
+
                                           </Spinner>
                                        </children>
                                     </AnchorPane>
@@ -129,16 +114,12 @@
                                              </font>
                                           </Label>
                                           <Button fx:id="hozaadasBTNSzobrok" layoutX="18.0" layoutY="229.0" mnemonicParsing="false" onAction="#onHozzaadasSzobrokBTNClick" prefHeight="25.0" prefWidth="223.0" text="Hozzáadás" />
-                                          <TextField fx:id="nevSzobrok" layoutX="41.0" layoutY="52.0" prefHeight="25.0" prefWidth="200.0" />
-                                          <Spinner fx:id="magassagSzobrok" editable="true" layoutX="41.0" layoutY="122.0" prefHeight="25.0" prefWidth="200.0" >
-                                              <valueFactory>
-                                                  <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" max="500" />
-                                              </valueFactory>
+                                          <TextField fx:id="nevSzobrok" layoutX="41.0" layoutY="52.0" prefHeight="25.0" prefWidth="200.0" promptText="Személy nevének megadása" />
+                                          <Spinner fx:id="magassagSzobrok" editable="true" layoutX="41.0" layoutY="122.0" prefHeight="25.0" prefWidth="200.0">
+
                                           </Spinner>
-                                          <Spinner fx:id="arSzobrok" editable="true" layoutX="41.0" layoutY="188.0" prefHeight="25.0" prefWidth="200.0" >
-                                              <valueFactory>
-                                                  <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" max="1000" />
-                                              </valueFactory>
+                                          <Spinner fx:id="arSzobrok" editable="true" layoutX="41.0" layoutY="188.0" prefHeight="25.0" prefWidth="200.0">
+
                                           </Spinner>
                                        </children>
                                     </AnchorPane>
@@ -165,15 +146,11 @@
                                              </font>
                                           </Label>
                                           <TextField fx:id="nevModositSzobrok" layoutX="39.0" layoutY="55.0" prefHeight="25.0" prefWidth="200.0" />
-                                          <Spinner fx:id="magassagModositSzobrok" editable="true" layoutX="39.0" layoutY="122.0" prefHeight="25.0" prefWidth="200.0" >
-                                              <valueFactory>
-                                                  <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" max="500" />
-                                              </valueFactory>
+                                          <Spinner fx:id="magassagModositSzobrok" editable="true" layoutX="39.0" layoutY="122.0" prefHeight="25.0" prefWidth="200.0">
+
                                           </Spinner>
                                           <Spinner fx:id="arModositSzobrok" editable="true" layoutX="39.0" layoutY="191.0" prefHeight="25.0" prefWidth="200.0">
-                                              <valueFactory>
-                                                  <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" max="1000"/>
-                                              </valueFactory>
+
                                           </Spinner>
                                        </children>
                                     </AnchorPane>

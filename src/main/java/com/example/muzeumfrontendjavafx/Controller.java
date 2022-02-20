@@ -49,7 +49,7 @@ public class Controller extends HelloController {
     @FXML
     private TextField nevSzobrok,nevModositSzobrok;
     @FXML
-    private Spinner magassagSzobrok,arSzobrok,magassagModositSzobrok,arModositSzobrok;
+    private Spinner<Integer> magassagSzobrok,arSzobrok,magassagModositSzobrok,arModositSzobrok;
 
 
     public void onTorlesFestmenyBTNClick(ActionEvent actionEvent) {
@@ -101,11 +101,15 @@ public class Controller extends HelloController {
                 alert("Az év megadása kötelező");
                 return;
             }catch (Exception e) {
-                alert("Az évnek 2023 alatt kell lennie!");
+                alert("Az új évnek 0 felett és 2023 alatt kell lennie!");
                 return;
             }
             if (ev >= 2022) {
-                alert("Az évnek 2023 alatt kell lennie!");
+                alert("Az új évnek 2023 alatt kell lennie!");
+                return;
+            }
+            if (ev <= 0) {
+                alert("Az új évnek 0 felett kell lennie!");
                 return;
             }
 
@@ -116,7 +120,7 @@ public class Controller extends HelloController {
                     alert("Sikeres hozzáadás!");
                     titleFestmeny.setText("");
                     onDisplayFestmeny.setSelected(false);
-                    datePickerFestmeny.getValueFactory().setValue(null);
+                    datePickerFestmeny.getValueFactory().setValue(2000);
                 } else {
                     alert("Sikertelen hozzáadás!");
                 }
@@ -145,11 +149,15 @@ public class Controller extends HelloController {
             alert("Az új év megadása kötelező");
             return;
         }catch (Exception e) {
-            alert("Az új évnek 2023 alatt kell lennie!");
+            alert("Az új évnek 0 felett és 2023 alatt kell lennie!");
             return;
         }
         if (ev >= 2022) {
             alert("Az új évnek 2023 alatt kell lennie!");
+            return;
+        }
+        if (ev <= 0) {
+            alert("Az új évnek 0 felett kell lennie!");
             return;
         }
 
@@ -170,7 +178,7 @@ public class Controller extends HelloController {
         }
         titleFestmenymodosit.setText("");
         onDisplayFestmenymodosit.setSelected(false);
-        datePickerFestmenymodosit.getValueFactory().setValue(null);
+        datePickerFestmenymodosit.getValueFactory().setValue(2000);
         festmenyListaFeltolt();
     }
 
@@ -222,6 +230,17 @@ public class Controller extends HelloController {
             } catch (NullPointerException e) {
                 alert("A magasság megadása kötelező");
                 return;
+            } catch (Exception e) {
+                alert("A magasságnak 0 felett és 250 alatt kell lennie!");
+                return;
+            }
+            if (magassag > 250) {
+                alert("A magasságnak 250 alatt kell lennie!");
+                return;
+            }
+            if (magassag < 0) {
+                alert("A magasságnak 0 felett kell lennie!");
+                return;
             }
 
             int ar = 0;
@@ -231,10 +250,13 @@ public class Controller extends HelloController {
                 alert("Az ár megadása kötelező");
                 return;
             } catch (Exception e) {
-                alert("Az árnak 1000 felett kell lennie!");
+                alert("Az árnak 1000 felett és 1000000000 alatt kell lennie!");
                 return;
             }
-
+            if (ar > 1000000000) {
+                alert("Az árnak 1000000000 alatt kell lennie!");
+                return;
+            }
             if (ar < 1000) {
                 alert("Az árnak 1000 felett kell lennie!");
                 return;
@@ -245,9 +267,9 @@ public class Controller extends HelloController {
                 Statues letrehozott = StatuesApi.post(uj);
                 if (letrehozott != null) {
                     alert("Sikeres hozzáadás!");
-                    nevModositSzobrok.setText("");
-                    magassagModositSzobrok.getValueFactory().setValue(null);
-                    arModositSzobrok.getValueFactory().setValue(null);
+                    nevSzobrok.setText("");
+                    magassagSzobrok.getValueFactory().setValue(100);
+                    arSzobrok.getValueFactory().setValue(2000);
                 } else {
                     alert("Sikertelen hozzáadás!");
                 }
@@ -275,7 +297,21 @@ public class Controller extends HelloController {
         } catch (NullPointerException e) {
             alert("Az új magasság megadása kötelező");
             return;
+        } catch (Exception e) {
+            alert("A magasságnak 0 felett és 250 alatt kell lennie!");
+            return;
         }
+        if (magassag > 250) {
+            alert("A magasságnak 250 alatt kell lennie!");
+            return;
+        }
+        if (magassag < 0) {
+            alert("A magasságnak 0 felett kell lennie!");
+            return;
+        }
+
+
+
 
         int ar = 0;
         try {
@@ -284,10 +320,13 @@ public class Controller extends HelloController {
             alert("Az új ár megadása kötelező");
             return;
         } catch (Exception e) {
-            alert("Az árnak 1000 felett kell lennie!");
+            alert("Az árnak 1000 felett és 1000000000 alatt kell lennie!");
             return;
         }
-
+        if (ar > 1000000000) {
+            alert("Az árnak 1000000000 alatt kell lennie!");
+            return;
+        }
         if (ar < 1000) {
             alert("Az árnak 1000 felett kell lennie!");
             return;
@@ -310,8 +349,8 @@ public class Controller extends HelloController {
             e.printStackTrace();
         }
         nevModositSzobrok.setText("");
-        magassagModositSzobrok.getValueFactory().setValue(null);
-        arModositSzobrok.getValueFactory().setValue(null);
+        magassagModositSzobrok.getValueFactory().setValue(100);
+        arModositSzobrok.getValueFactory().setValue(2000);
         szoborListaFeltolt();
     }
 
@@ -346,6 +385,15 @@ public class Controller extends HelloController {
 
 
     public void initialize() {
+        datePickerFestmeny.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,2022,2000,1));
+        datePickerFestmenymodosit.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,2022,2000,1));
+        magassagSzobrok.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,250,100,1));
+        magassagModositSzobrok.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,250,100,1));
+        arSzobrok.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1000,1000000000,2000,1));
+        arModositSzobrok.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1000,1000000000,2000,1));
+
+
+
         idFestmeny.setCellValueFactory(new PropertyValueFactory<>("id"));
         cimFestmeny.setCellValueFactory(new PropertyValueFactory<>("title"));
         keszultFestmeny.setCellValueFactory(new PropertyValueFactory<>("year"));
