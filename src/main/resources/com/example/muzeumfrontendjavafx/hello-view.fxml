@@ -13,7 +13,7 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="224.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="torlesBTNFestmeny" disable="true" layoutX="325.0" layoutY="328.0" mnemonicParsing="false" onAction="#onTorlesFestmenyBTNClick" prefHeight="25.0" prefWidth="257.0" text="Törlés" />
-                        <TabPane layoutX="327.0" layoutY="23.0" prefHeight="297.0" prefWidth="255.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane fx:id="hozaadasModositTabFestmeny" layoutX="327.0" layoutY="23.0" prefHeight="297.0" prefWidth="255.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
                             <Tab text="Hozzáaadás">
                               <content>
@@ -92,7 +92,7 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="torlesBTNSzobrok" disable="true" layoutX="322.0" layoutY="320.0" mnemonicParsing="false" onAction="#onTorlesSzobrokBTNClick" prefHeight="25.0" prefWidth="257.0" text="Törlés" />
-                        <TabPane layoutX="323.0" layoutY="17.0" prefHeight="297.0" prefWidth="255.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane fx:id="hozaadasModositTabSzobor" layoutX="323.0" layoutY="17.0" prefHeight="297.0" prefWidth="255.0" tabClosingPolicy="UNAVAILABLE">
                            <tabs>
                               <Tab text="Hozzáaadás">
                                  <content>

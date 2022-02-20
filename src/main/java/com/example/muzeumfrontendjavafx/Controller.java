@@ -19,6 +19,8 @@ public class Controller extends HelloController {
     @FXML
     public Tab modositasFestmenyTab;
     @FXML
+    public TabPane hozaadasModositTabFestmeny;
+    @FXML
     private TableView<Paintings> listazasFestmeny;
     @FXML
     private TableColumn<Paintings, Integer> idFestmeny;
@@ -38,6 +40,8 @@ public class Controller extends HelloController {
 
     @FXML
     public Tab modositasSzobrokTab;
+    @FXML
+    public TabPane hozaadasModositTabSzobor;
     @FXML
     private TableView<Statues> listazasSzobrok;
     @FXML
@@ -59,7 +63,11 @@ public class Controller extends HelloController {
         }
         try {
             boolean siker = PaintingsApi.delete(torlendo.getId());
-            alert(siker ? "Sikertelen törlés!" : "Sikeres törlés!" );
+            alert(siker ? "Sikeres törlés!" : "Sikertelen törlés!");
+            titleFestmenymodosit.setText("");
+            onDisplayFestmenymodosit.setSelected(false);
+            datePickerFestmenymodosit.getValueFactory().setValue(2000);
+            hozaadasModositTabFestmeny.getSelectionModel().select(0);
             festmenyListaFeltolt();
         } catch (IOException e) {
             hibaKiir(e);
@@ -73,6 +81,7 @@ public class Controller extends HelloController {
             torlesBTNFestmeny.setDisable(false);
             modositasFestmenyTab.setDisable(false);
             modositBTNFestmeny.setDisable(false);
+            hozaadasModositTabFestmeny.getSelectionModel().select(1);
 
             Paintings modositando = listazasFestmeny.getSelectionModel().getSelectedItem();
             titleFestmenymodosit.setText(modositando.getTitle());
@@ -170,6 +179,7 @@ public class Controller extends HelloController {
             Paintings modositott = PaintingsApi.put(modositando, modositando.getId());
             if (modositott != null) {
                 alertWait("Sikeres módosítás");
+                hozaadasModositTabFestmeny.getSelectionModel().select(0);
             } else {
                 alert("Sikertelen módosítás");
             }
@@ -192,7 +202,11 @@ public class Controller extends HelloController {
         }
         try {
             boolean siker = StatuesApi.delete(torlendo.getId());
-            alert(siker ? "Sikertelen törlés!" : "Sikeres törlés!" );
+            alert(siker ?  "Sikeres törlés!" : "Sikertelen törlés!");
+            nevModositSzobrok.setText("");
+            magassagModositSzobrok.getValueFactory().setValue(100);
+            arModositSzobrok.getValueFactory().setValue(2000);
+            hozaadasModositTabSzobor.getSelectionModel().select(0);
             szoborListaFeltolt();
         } catch (IOException e) {
             hibaKiir(e);
@@ -205,6 +219,7 @@ public class Controller extends HelloController {
             torlesBTNSzobrok.setDisable(false);
             modositasSzobrokTab.setDisable(false);
             modositBTNSzobrok.setDisable(false);
+            hozaadasModositTabSzobor.getSelectionModel().select(1);
 
             Statues modositando = listazasSzobrok.getSelectionModel().getSelectedItem();
             nevModositSzobrok.setText(modositando.getPerson());
@@ -221,6 +236,10 @@ public class Controller extends HelloController {
             String nev = nevSzobrok.getText();
             if (nev.isEmpty()) {
                 alert("A név megadása kötelező");
+                return;
+            }
+            if (nev.length()<5) {
+                alert("A névnek 5 betünél hosszabbnak kell lennie");
                 return;
             }
 
@@ -286,8 +305,12 @@ public class Controller extends HelloController {
         Statues modositando = listazasSzobrok.getSelectionModel().getSelectedItem();
 
         String nev = nevModositSzobrok.getText().trim();
-        if (nevModositSzobrok.getText().isEmpty()){
+        if (nev.isEmpty()){
             alert("A név megadása kötelező");
+            return;
+        }
+        if (nev.length()<5) {
+            alert("A névnek 5 betünél hosszabbnak kell lennie");
             return;
         }
 
@@ -342,6 +365,7 @@ public class Controller extends HelloController {
             Statues modositott = StatuesApi.put(modositando, modositando.getId());
             if (modositott != null) {
                 alertWait("Sikeres módosítás");
+                hozaadasModositTabSzobor.getSelectionModel().select(0);
             } else {
                 alert("Sikertelen módosítás");
             }
@@ -358,6 +382,7 @@ public class Controller extends HelloController {
     private void festmenyListaFeltolt() {
         torlesBTNFestmeny.setDisable(true);
         modositBTNFestmeny.setDisable(true);
+        modositasFestmenyTab.setDisable(true);
         try {
             List<Paintings> list = PaintingsApi.get();
             listazasFestmeny.getItems().clear();
@@ -372,6 +397,7 @@ public class Controller extends HelloController {
     private void szoborListaFeltolt() {
         torlesBTNSzobrok.setDisable(true);
         modositBTNSzobrok.setDisable(true);
+        modositasSzobrokTab.setDisable(true);
         try {
             List<Statues> list = StatuesApi.get();
             listazasSzobrok.getItems().clear();

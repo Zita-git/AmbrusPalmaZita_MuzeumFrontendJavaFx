@@ -27,7 +27,7 @@ public class PaintingsApi  extends HelloController {
     }
 
     public static boolean delete(int id) throws IOException {
-        return Api.delete(API_URL, id).getResponseCode() == 240;
+        return Api.delete(API_URL, id).getResponseCode() == 204;
     }
 
     public static Paintings put(Paintings modosit, int id) throws IOException {
