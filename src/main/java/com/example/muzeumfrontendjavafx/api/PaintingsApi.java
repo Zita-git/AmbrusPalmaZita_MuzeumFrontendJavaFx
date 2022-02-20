@@ -1,6 +1,6 @@
 package com.example.muzeumfrontendjavafx.api;
 
-import com.example.muzeumfrontendjavafx.Controller;
+import com.example.muzeumfrontendjavafx.HelloController;
 import com.example.muzeumfrontendjavafx.muzeum.Paintings;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
-public class PaintingsApi extends Controller {
+public class PaintingsApi  extends HelloController {
     private static final String API_URL = "http://127.0.0.1:8000/api/paintings";
     private static Gson jsonConverter = new Gson();
 

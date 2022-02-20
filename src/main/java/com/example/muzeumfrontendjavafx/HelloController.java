@@ -16,27 +16,6 @@ import java.util.TimerTask;
 
 public class HelloController {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     protected void alert(String uzenet) {
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setContentText(uzenet);
